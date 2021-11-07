@@ -10,8 +10,8 @@
             <input class="form-control" formControlName="name">
         </div>
         <div class="col-auto">
-            <div class="form-text"
-                 error-msg
+            <div error-msg
+                 message="This field is required, fill it please. Thanks."
                  *ngIf="itHasErrors('name')">
                 <span>This field is required</span>
             </div>
