@@ -1,12 +1,18 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit} from '@angular/core';
 
 @Directive({
   selector: '[error-msg]'
 })
-export class ErrorMessageDirective implements OnInit {
+export class ErrorMessageDirective implements OnInit{
+
+  private _color: string = "red";
 
   public htmlElement: ElementRef<HTMLElement> 
-  @Input() color: string = "red"; 
+
+  @Input() set color(value:string) {
+    this.htmlElement.nativeElement.style.color=value;
+    this._color=value;
+  }
   @Input() message: string = ""; 
 
   constructor(private el:ElementRef<HTMLElement>) {
@@ -14,21 +20,12 @@ export class ErrorMessageDirective implements OnInit {
   }
   
   ngOnInit(): void {
-    this.setColor();
-    this.setMessage();
-    this.addClass();
+    this.addStyle();
   }
 
-  setColor(): void{
-    this.htmlElement.nativeElement.style.color=this.color;
-  }
-
-  setMessage(): void{
-    this.htmlElement.nativeElement.innerHTML=this.message;
-  }
-
-  addClass(): void{
+  addStyle(): void{
     this.htmlElement.nativeElement.classList.add('form-text');
+    console.log("clase cambiada");
   }
 
 }

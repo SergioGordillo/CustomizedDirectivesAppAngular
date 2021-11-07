@@ -12,6 +12,7 @@
         <div class="col-auto">
             <div error-msg
                  message="This field is required, fill it please. Thanks."
+                 [color]="color"
                  *ngIf="itHasErrors('name')">
                 <span>This field is required</span>
             </div>
@@ -23,6 +24,15 @@
             <button
                 class="btn btn-primary"
             >Save</button>
+        </div>
+    </div>  
+
+    <div class="row mt-3">
+        <div class="col">
+            <button
+                class="btn btn-primary"
+                (click)="changeColor()"
+            >Change color text</button>
         </div>
     </div>  
 </form>
