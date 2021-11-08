@@ -13,7 +13,7 @@
             <div error-msg
                  message="This field is required, fill it please. Thanks."
                  [color]="color"
-                 *ngIf="itHasErrors('name')">
+                 [valid]="itHasErrors('name')">
                 <span>This field is required</span>
             </div>
         </div>
@@ -40,3 +40,12 @@
 <h3 class="mt-5">Form</h3>
 <pre>Value: {{myForm.value | json}}</pre>
 <pre>Valid: {{myForm.valid}}</pre>
+
+<div class="row mt-5">
+    <div class="col">
+        <div class="alert alert-primary"
+             *CustomIf="myForm.valid">
+            All is OK
+        </div>
+    </div>
+</div>
